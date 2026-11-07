@@ -14,24 +14,31 @@
       padding: 30px;
     }
     .container {
-        width: 100%;
+        display:flex;
+        width: 90%;
         height: auto;
         padding: 20px;
         margin: 20px;
         border: 2px solid black;
+        gap: 20px;
     }
 
     input {
-      flex: 1;
-      padding: 15px;
-      border: 2px solid black;
-      border-radius: 10px;
-      font-size: 16px;
+        width: 40%;
+        flex: none;
+    }
+    button {
+        cursor: pointer;
     }
     .picture img{
         width: 50%;
         height: auto;
     }
+    .house {
+        display:flex;
+        flex-direction: column;
+    }
+
 
   </style>
 </head>
@@ -42,7 +49,27 @@
     <div class="house">
       <h2>House 1</h2>
 
+        <div class="card">
+
+            <div class="picture"><img src="House1.png" alt="House 1"></div>
+
+            <div class="row">
+                <input type="text" placeholder="placeholder">
+                <button type="button">Click Me</button>
+            </div>
+
+            <div class="row">
+                <input type="text" placeholder="placeholder">
+                <button type="button">Click Me</button>
+            </div>
+        </div>
+    </div> 
+
+    <div class="house"> <!-- Start House 2 -->
+      <h2>House 2</h2>
+
       <div class="card">
+
         <div class="picture"><img src="House1.png" alt="House 1"></div>
 
         <div class="row">
@@ -53,8 +80,10 @@
         <div class="row">
           <input type="text" placeholder="placeholder">
           <button type="button">Click Me</button>
+
         </div>
       </div>
+
     </div>
 
   </div>
