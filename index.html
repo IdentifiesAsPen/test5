@@ -54,34 +54,15 @@
 
   </style>
 </head>
-<script>
-    var count= [];
-    var floor = [];
-    for(var i = 0; i<7; i++){
-        count[i] = Math.floor(Math.random() * 10) + 1;
-        floor[i] = count[i];
-    }
-    function change(i, ch){
-        if(count[i]+ch>=floor[i] && count[i]+ch<=10){
-            count[i] = count[i] + ch;
-            var a = document.getElementById("stat"+i);
-            a.value = count[i];
-        }
-    }
-    function returnStat(){
-        for(var i = 0; i<7; i++){
-            var a = document.getElementById("stat"+i);
-            a.value = count[i];
-        }
-    }
-    returnStat();
-</script>
+
+
+
 <body>
   <div class="container">
 
     <div class="house">
       <h2>House 1</h2>
-
+      <p>cost: <span id="cost0">8</span></p>
         <div class="card">
 
             <div class="picture"><img src="House1.png" alt="House 1"></div>
@@ -93,29 +74,31 @@
             </div>
 
             <div class="row">
-                <input type="text" placeholder="placeholder">
-                <button type="button">Click Me</button>
+                <input type="text" id="stat1" readonly>
+                <button onclick="change(1, -1)">-</button>
+                <button onclick="change(1, 1)">+</button>
             </div>
         </div>
     </div> 
 
     <div class="house"> <!-- Start House 2 -->
       <h2>House 2</h2>
-
+      <p>cost: <span id="cost1">8</span></p>
       <div class="card">
 
         <div class="picture"><img src="House1.png" alt="House 1"></div>
 
         <div class="row">
-          <input type="text" placeholder="placeholder">
-          <button type="button">Click Me</button>
-        </div>
+                <input type="text" id="stat7" readonly>
+                <button onclick="change(7, -1)">-</button>
+                <button onclick="change(7, 1)">+</button>
+            </div>
 
         <div class="row">
-          <input type="text" placeholder="placeholder">
-          <button type="button">Click Me</button>
-
-        </div>
+                <input type="text" id="stat8" readonly>
+                <button onclick="change(8, -1)">-</button>
+                <button onclick="change(8, 1)">+</button>
+            </div>
       </div>
 
     </div>
@@ -123,3 +106,36 @@
   </div>
 </body>
 </html>
+
+
+
+<script>
+    var count= [];
+    var floor = [];
+    var cost = [8, 8];
+    for(var i = 0; i<14; i++){
+        count[i] = Math.floor(Math.random() * 10) + 1;
+        floor[i] = count[i];
+    }
+    returnStat();
+    function change(i, ch){
+        var h = 0;
+        if(i>=7) h = 1;
+        if(count[i]+ch>=floor[i] && count[i]+ch<=10 && cost[h] - ch >=0 && cost[h] - ch <=8){
+            count[i] = count[i] + ch;
+            cost[h] -= ch;
+            var a = document.getElementById("stat"+i);
+            a.value = count[i];
+            var b = document.getElementById("cost"+h);
+            b.innerHTML = cost[h];
+        }
+    }
+    function returnStat(){
+        for(var i = 0; i<14; i++){
+            var a = document.getElementById("stat"+i);
+            if(a== null) continue;
+            a.value = count[i];
+        }
+    }
+    returnStat();
+</script>
