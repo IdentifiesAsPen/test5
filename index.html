@@ -110,6 +110,9 @@
 
 
 <script>
+    //house area, land area, quality, bed/bath, age 
+    var total = [1000, 1000];
+    var purchase = [20, 80, 10, 10, 30]
     var count= [];
     var floor = [];
     var cost = [8, 8];
@@ -120,14 +123,21 @@
     returnStat();
     function change(i, ch){
         var h = 0;
+        var payment = purchase[i%7]*ch;
         if(i>=7) h = 1;
-        if(count[i]+ch>=floor[i] && count[i]+ch<=10 && cost[h] - ch >=0 && cost[h] - ch <=8){
+        if(count[i]+ch>=floor[i] && count[i]+ch<=10 
+        && cost[h] - ch >=0 
+        && cost[h] - ch <=8
+        && total[h] - payment >=0){
             count[i] = count[i] + ch;
             cost[h] -= ch;
+            total[h] -= payment;
             var a = document.getElementById("stat"+i);
             a.value = count[i];
             var b = document.getElementById("cost"+h);
             b.innerHTML = cost[h];
+            var c = document.getElementById("total"+h);
+            c.innerHTML = total[h];
         }
     }
     function returnStat(){
